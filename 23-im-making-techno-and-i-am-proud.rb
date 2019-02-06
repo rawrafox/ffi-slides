@@ -45,7 +45,7 @@ class DOSKernel
     when 0x1a # set dta
       @dta = cpu.dx
     when 0x30 # version
-      cpu.write_register(Hypervisor::X86_RAX, 0x0700)
+      cpu.ax = 0x0700
     when 0x3d # open
       # TODO: Don't ignore OFLAG
       @fds << File.open(read_string(cpu.ds, cpu.dx))
